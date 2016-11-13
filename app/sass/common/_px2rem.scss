@@ -1,0 +1,8 @@
+/*
+* convert px to rem
+* @include px2rem(640);
+
+*/
+@function px2rem( $px  ){
+	@return $px*320/$designWidth/20 + rem;
+}

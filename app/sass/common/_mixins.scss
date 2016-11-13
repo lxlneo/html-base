@@ -1,0 +1,57 @@
+/*
+* Apply a CSS3 border radius
+* @include border-radius(4px);
+
+*/
+@mixin border-radius($radius) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-ms-border-radius: $radius;
+	border-radius: $radius;
+}
+
+/*
+ * Mixin for clearfix
+ * @include clearfix;
+*/
+@mixin clearfix {
+	&:before, &:after {
+		content: "";
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+	*zoom: 1;
+}
+
+/*
+ * Apply a CSS3 box-shadow
+ * @include boxShadow(5px, 5px, 10px, #000);
+ */
+@mixin boxShadow($x:5px, $y:5px, $blur:10px, $spread:10px, $color:#000) {
+	-webkit-box-shadow: $x $y $blur $spread $color;
+	box-shadow: $x $y $blur $spread $color;
+}
+
+@mixin font-dpr($name, $px) {
+	#{$name}: round($px / 2) * 1px;
+	[data-dpr="2"] & {
+		#{$name}: $px * 1px;
+	}
+	// for mx3
+	[data-dpr="2.5"] & {
+		#{$name}: round($px * 1.25) * 1px;
+	}
+	// for 小米note
+	[data-dpr="2.75"] & {
+		#{$name}: round($px * 1.375) * 1px;
+	}
+	[data-dpr="3"] & {
+		#{$name}: round($px *1.5) * 1px
+	}
+	// for 三星note4
+	[data-dpr="4"] & {
+		#{$name}: $px * 2px;
+	}
+}
