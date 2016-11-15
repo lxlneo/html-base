@@ -87,22 +87,17 @@ gulp.task('sass', function () {
     gulp.src(config.paths.main_sass)
         .pipe(sass())
         .pipe(gulp.dest(config.paths.output_css))
-    gulp.src(config.paths.fonts)
-        .pipe(gulp.dest(config.paths.output_css))
-    gulp.src(config.paths.plugins_css)
-        .pipe(sass())
-        .pipe(cssmini())
-        .pipe(gulp.dest(config.paths.output_css))
 })
 
 gulp.task('img', function () {
     gulp.src(config.paths.img)
         .pipe(gulp.dest(config.paths.output + "/img"))
 })
+
 gulp.task('watch', function () {
     gulp.watch(config.paths.js_floder+"/**/*.js", ['js'])
     gulp.watch(config.paths.sass, ['sass'])
-    gulp.watch(config.paths.hbs, ['hbs'])
+    gulp.watch(config.paths.html, ['html'])
     gulp.watch(config.paths.img, ['img'])
 })
 
@@ -113,10 +108,10 @@ gulp.task('server', function () {
             baseDir: config.paths.output
         }
     })
-    gulp.watch(['*.html', '*/**/*.js', '*/**/*.css'], {cwd: 'output'}, reload);
+    gulp.watch(['*.html', '*.js', '*.css'], {cwd: 'output'}, reload);
 })
 
-gulp.task('template', ['html', 'hbs', 'img'])
+gulp.task('template', ['html', 'img'])
 
 gulp.task('default', ['clean', 'watch', 'template', 'js', 'sass', 'server'], function (error) {
     console.log(error)
