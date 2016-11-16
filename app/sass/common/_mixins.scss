@@ -55,3 +55,8 @@
 		#{$name}: $px * 2px;
 	}
 }
+
+@mixin v-middle($h:100%){
+	line-height: $h;
+	vertical-align: middle;
+}

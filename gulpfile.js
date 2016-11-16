@@ -64,23 +64,9 @@ function getFolders(dir) {
 }
 
 gulp.task('js', function() {
-    var folders = getFolders(config.paths.js_floder);
-
-    var tasks = folders.map(function(folder) {
-        // 拼接成 foldername.js
-        // 写入输出
-        // 压缩
-        // 重命名为 folder.min.js
-        // 再一次写入输出
-        return gulp.src(path.join(config.paths.js_floder, folder, '/**/*.js'))
-            .pipe(concat(folder + '.js'))
-            .pipe(gulp.dest(config.paths.js_floder))
-            .pipe(jsmini())
-            .pipe(rename(folder + '.js'))
-            .pipe(gulp.dest(config.paths.output_js));
-    });
-
-    return merge(tasks);
+    gulp.src(path.join(config.paths.js_floder+'/**/*.js'))
+        .pipe(jsmini())
+        .pipe(gulp.dest(config.paths.output_js));
 });
 
 gulp.task('sass', function () {
