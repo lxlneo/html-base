@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-<header class="header">
+<header class="header headroom">
     <div class="nav-child left-nav">  
         <span class="nav-items">
             <a href="" class="nav-item"><span>互联网+与+互联网</span></a>
@@ -228,6 +228,21 @@
     </div>
 </footer>
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-<script src="/js/project.js"></script>
+<script type="text/javascript" src="/js/headerroom.js"></script>
+<script type="text/javascript" src="/js/project.js"></script>
+<script type="text/javascript">
+    (function() {
+        var header = new Headroom(document.querySelector("header"), {
+            tolerance: 5,
+            offset : 205,
+            classes: {
+                initial: "animated",
+                pinned: "slideDown",
+                unpinned: "slideUp"
+            }
+        });
+        header.init();
+    }());
+</script>
 </body>
 </html>
